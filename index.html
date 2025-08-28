@@ -116,6 +116,7 @@
   <nav class="navbar">
     <h2 class="logo">My Portfolio</h2>
     <ul class="menu">
+      <li><a onclick="goHome()">Home</a></li>
       <li><a onclick="showSection('about')">About</a></li>
       <li><a onclick="showSection('skills')">Skills</a></li>
       <li><a onclick="showSection('projects')">Projects</a></li>
@@ -211,8 +212,49 @@
     }
 
     function showSection(id) {
+      // Hide all sections
       document.querySelectorAll('.section').forEach(sec => {
         sec.classList.remove('active');
       });
-      document.getElementById(id).classList.add('active');
-      document.getElementById('home
+
+      // Hide hero
+      document.getElementById('
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+  }
+
+  function showSection(id) {
+    // Hide all content sections
+    document.querySelectorAll('.section').forEach(sec => {
+      sec.classList.remove('active');
+    });
+
+    // Hide the hero section
+    document.getElementById('home').style.display = 'none';
+
+    // Show the selected section
+    const selected = document.getElementById(id);
+    if (selected) {
+      selected.classList.add('active');
+    }
+  }
+
+  function goHome() {
+    // Hide all content sections
+    document.querySelectorAll('.section').forEach(sec => {
+      sec.classList.remove('active');
+    });
+
+    // Show the hero section
+    document.getElementById('home').style.display = 'flex';
+  }
+
+  // Initial setup on page load
+  window.onload = () => {
+    goHome(); // Show home section only
+  };
+</script>
+</body>
+</html>
