@@ -7,9 +7,12 @@
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
 
-    /* Dark Mode Styles */
     body.dark-mode {
       background-color: #121212;
       color: #f0f0f0;
@@ -19,7 +22,6 @@
     body.dark-mode .navbar { background-color: #000; }
     body.dark-mode .section.dark a { color: lightyellow; }
 
-    /* Navbar */
     .navbar {
       position: fixed;
       top: 0; left: 0; width: 100%;
@@ -28,14 +30,13 @@
       z-index: 1000;
     }
     .navbar .menu { list-style: none; display: flex; gap: 20px; }
-    .navbar a { color: white; text-decoration: none; transition: 0.3s; }
+    .navbar a { color: white; text-decoration: none; transition: 0.3s; cursor: pointer; }
     .navbar a:hover { color: yellow; }
     .navbar button {
       background: none; border: 1px solid white; color: white;
       padding: 5px 10px; cursor: pointer;
     }
 
-    /* Hero Section */
     .hero {
       height: 100vh;
       background: linear-gradient(to right, #4f46e5, #9333ea);
@@ -46,7 +47,6 @@
     .hero h1 { font-size: 3rem; margin-bottom: 10px; }
     .hero span { color: yellow; }
 
-    /* Typing Animation */
     .typing {
       overflow: hidden;
       white-space: nowrap;
@@ -61,20 +61,32 @@
       50% { border-color: transparent }
     }
 
-    /* Sections */
-    .section { padding: 80px 20px; text-align: center; }
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
     .section.gray { background: #f4f4f4; }
     .section.dark { background: #111; color: white; }
     .section h2 { font-size: 2.2rem; margin-bottom: 20px; }
 
-    /* Skills */
-    .skills { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+    .skills {
+      display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;
+    }
     .skills span {
       background: #4f46e5; color: white; padding: 10px 20px;
       border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+    .skills span:hover {
+      background: yellow; color: black;
+      transform: scale(1.1);
+      box-shadow: 0 0 10px yellow;
     }
 
-    /* Projects */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -83,12 +95,20 @@
     .card {
       background: linear-gradient(135deg, #4f46e5, #9333ea);
       color: white; padding: 20px; border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
     }
-    .card:hover { transform: translateY(-5px); }
+    .card:hover {
+      transform: rotateX(5deg) rotateY(5deg);
+    }
 
-    /* Contact Links */
     .section.dark a { color: yellow; }
+
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -96,12 +116,11 @@
   <nav class="navbar">
     <h2 class="logo">My Portfolio</h2>
     <ul class="menu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a onclick="showSection('about')">About</a></li>
+      <li><a onclick="showSection('skills')">Skills</a></li>
+      <li><a onclick="showSection('projects')">Projects</a></li>
+      <li><a onclick="showSection('certifications')">Certifications</a></li>
+      <li><a onclick="showSection('contact')">Contact</a></li>
     </ul>
     <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
   </nav>
@@ -109,7 +128,6 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <h1 class="typing">Hi, I'm <span>Koya Uma Maheswar</span> 👋</h1>
-    <p>Aspiring Software Engineer | Full Stack Developer</p>
   </section>
 
   <!-- About Section -->
@@ -143,24 +161,15 @@
     <div class="projects">
       <div class="card">
         <h3>Hospital Management System</h3>
-        <p>
-          A full-stack project built using Java Servlets, JSP, and MySQL.
-          Includes login/signup, patient records, and doctor management.
-        </p>
+        <p>A full-stack project using Java Servlets, JSP, and MySQL.</p>
       </div>
       <div class="card">
         <h3>Smart Ambulance Dashboard</h3>
-        <p>
-          A web app to track ambulances, emergency alerts, and hospital
-          availability. Built with ReactJS and Google Maps API.
-        </p>
+        <p>ReactJS + Google Maps API for emergency tracking.</p>
       </div>
       <div class="card">
         <h3>Transport Booking System</h3>
-        <p>
-          A booking platform for buses with seat selection and payment
-          integration using HTML, CSS, JS, and Java backend.
-        </p>
+        <p>Bus booking platform with seat selection and payments.</p>
       </div>
     </div>
   </section>
@@ -171,15 +180,15 @@
     <div class="projects">
       <div class="card">
         <h3>Java Programming Certificate</h3>
-        <p>Issued by Oracle | Completed in 2024</p>
+        <p>Oracle | 2024</p>
       </div>
       <div class="card">
         <h3>React Developer Certificate</h3>
-        <p>Issued by Meta | Completed in 2025</p>
+        <p>Meta | 2025</p>
       </div>
       <div class="card">
         <h3>MySQL Database Certificate</h3>
-        <p>Issued by Udemy | Completed in 2023</p>
+        <p>Udemy | 2023</p>
       </div>
     </div>
   </section>
@@ -187,19 +196,23 @@
   <!-- Contact Section -->
   <section id="contact" class="section dark">
     <h2>Contact</h2>
-    <p>📧 Email: koyaumamaheswar.14@gmail.com</p>
-    <p>📞 Phone: 6309242547</p>
+    <p>📧 koyaumamaheswar.14@gmail.com</p>
+    <p>📞 6309242547</p>
     <p>
       🔗 <a href="https://www.linkedin.com/in/koya-uma-maheswar-7126aa321" target="_blank">LinkedIn</a> |
       <a href="https://github.com/" target="_blank">GitHub</a>
     </p>
   </section>
 
-  <!-- Dark Mode Script -->
+  <!-- Scripts -->
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
     }
-  </script>
-</body>
-</html>
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      document.getElementById('home
