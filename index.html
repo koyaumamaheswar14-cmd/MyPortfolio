@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Koya Uma Maheswar | Portfolio</title>
-
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -196,9 +195,9 @@
     <p>📧 koyaumamaheswar.14@gmail.com</p>
     <p>📞 6309242547</p>
     <p>
-      🔗 <a href="https://www.linkedin.com/in/koya-uma-maheswar-7126aa321" target="_blank">LinkedIn</a>
+      🔗 <a href="https://www.linkedin.com/in/koya-uma-maheswar-7126aa321" target="_blank">LinkedIn</a> |
             🔗 <a href="https://www.linkedin.com/in/koya-uma-maheswar-7126aa321" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/" target="_blank">GitHub</a>
+      <a href="https://github.com/koyaumamaheswar" target="_blank">GitHub</a>
     </p>
   </section>
 
@@ -207,26 +206,19 @@
     // Toggle dark mode
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
-      alert("Dark mode toggled!");
     }
 
     // Show specific section
     function showSection(id) {
-      // Hide all sections
       document.querySelectorAll('.section').forEach(sec => {
         sec.classList.remove('active');
         sec.style.display = 'none';
       });
-
-      // Hide hero
       document.getElementById('home').style.display = 'none';
-
-      // Show selected section
       const selected = document.getElementById(id);
       if (selected) {
         selected.classList.add('active');
         selected.style.display = 'block';
-        alert(`Navigated to ${id.charAt(0).toUpperCase() + id.slice(1)} section`);
       }
     }
 
@@ -236,19 +228,17 @@
         sec.classList.remove('active');
         sec.style.display = 'none';
       });
-
       document.getElementById('home').style.display = 'flex';
-      alert("Welcome Home!");
     }
 
     // Alert for skills
     function showAlert(skill) {
-      alert(`You hovered over ${skill}`);
+      console.log(`Hovered over: ${skill}`);
     }
 
     // Alert for projects/certifications
     function projectAlert(projectName) {
-      alert(`You clicked on: ${projectName}`);
+      console.log(`Clicked on: ${projectName}`);
     }
 
     // Initial setup
