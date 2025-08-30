@@ -1,4 +1,203 @@
-      🔗 <a href="https://www.linkedin.com/in/koya-uma-maheswar-7126aa321" target="_blank">LinkedIn</a> |
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koya Uma Maheswar | Portfolio</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    body.dark-mode .section.gray { background-color: #1e1e1e; }
+    body.dark-mode .card { background-color: #2a2a2a; color: white; }
+    body.dark-mode .navbar { background-color: #000; }
+    body.dark-mode .section.dark a { color: lightyellow; }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      background: #222; color: white; padding: 15px 30px;
+      z-index: 1000;
+    }
+    .navbar .menu { list-style: none; display: flex; gap: 20px; }
+    .navbar a { color: white; text-decoration: none; transition: 0.3s; cursor: pointer; }
+    .navbar a:hover { color: yellow; }
+    .navbar button {
+      background: none; border: 1px solid white; color: white;
+      padding: 5px 10px; cursor: pointer;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(to right, #4f46e5, #9333ea);
+      color: white; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 20px;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero span { color: yellow; }
+
+    .typing {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid yellow;
+      animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .section.gray { background: #f4f4f4; }
+    .section.dark { background: #111; color: white; }
+    .section h2 { font-size: 2.2rem; margin-bottom: 20px; }
+
+    .skills {
+      display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;
+    }
+    .skills span {
+      background: #4f46e5; color: white; padding: 10px 20px;
+      border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .skills span:hover {
+      background: yellow; color: black;
+      transform: scale(1.1);
+      box-shadow: 0 0 10px yellow;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px; margin-top: 20px;
+    }
+    .card {
+      background: linear-gradient(135deg, #4f46e5, #9333ea);
+      color: white; padding: 20px; border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: rotateX(5deg) rotateY(5deg);
+    }
+
+    .section.dark a { color: yellow; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2 class="logo">My Portfolio</h2>
+    <ul class="menu">
+      <li><a onclick="goHome()">Home</a></li>
+      <li><a onclick="showSection('about')">About</a></li>
+      <li><a onclick="showSection('skills')">Skills</a></li>
+      <li><a onclick="showSection('projects')">Projects</a></li>
+      <li><a onclick="showSection('certifications')">Certifications</a></li>
+      <li><a onclick="showSection('contact')">Contact</a></li>
+    </ul>
+    <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1 class="typing">Hi, I'm <span>Koya Uma Maheswar</span> 👋</h1>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section gray">
+    <h2>About Me</h2>
+    <p>
+      I am a B.Tech IT student passionate about building modern web applications
+      using Java, React, and MySQL. I love solving coding challenges and working
+      on innovative projects.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span onmouseover="showAlert('Java')">Java</span>
+      <span onmouseover="showAlert('DSA')">DSA</span>
+      <span onmouseover="showAlert('ReactJS')">ReactJS</span>
+      <span onmouseover="showAlert('HTML')">HTML</span>
+      <span onmouseover="showAlert('CSS')">CSS</span>
+      <span onmouseover="showAlert('JavaScript')">JavaScript</span>
+      <span onmouseover="showAlert('MySQL')">MySQL</span>
+      <span onmouseover="showAlert('Git & GitHub')">Git & GitHub</span>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section gray">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card" onclick="projectAlert('Hospital Management System')">
+        <h3>Hospital Management System</h3>
+        <p>A full-stack project using Java Servlets, JSP, and MySQL.</p>
+      </div>
+      <div class="card" onclick="projectAlert('Smart Ambulance Dashboard')">
+        <h3>Smart Ambulance Dashboard</h3>
+        <p>ReactJS + Google Maps API for emergency tracking.</p>
+      </div>
+      <div class="card" onclick="projectAlert('Transport Booking System')">
+        <h3>Transport Booking System</h3>
+        <p>Bus booking platform with seat selection and payments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <h2>Certifications</h2>
+    <div class="projects">
+      <div class="card" onclick="projectAlert('Java Programming Certificate')">
+        <h3>Java Programming Certificate</h3>
+        <p>Oracle | 2024</p>
+      </div>
+      <div class="card" onclick="projectAlert('React Developer Certificate')">
+        <h3>React Developer Certificate</h3>
+        <p>Meta | 2025</p>
+      </div>
+      <div class="card" onclick="projectAlert('MySQL Database Certificate')">
+        <h3>MySQL Database Certificate</h3>
+        <p>Udemy | 2023</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section dark">
+    <h2>Contact</h2>
+    <p>📧 koyaumamaheswar.14@gmail.com</p>
+    <p>📞 6309242547</p>
+    <p>
+      🔗 <a href="https://www.linkedin.com/in/koya-uma-maheswar-7126aa321" target="_blank">LinkedIn</a>
+            🔗 <a href="https://www.linkedin.com/in/koya-uma-maheswar-7126aa321" target="_blank">LinkedIn</a> |
       <a href="https://github.com/" target="_blank">GitHub</a>
     </p>
   </section>
